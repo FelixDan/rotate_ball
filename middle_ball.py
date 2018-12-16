@@ -1,17 +1,19 @@
 import random, math
-from rotate_ball import Ball, Point
+from big_ball import Ball
+from point import Point
 
 class Middle_Ball(Ball):
     # 卫星类
     def __init__(self, screen, image, bigball):
-        super().__init__(image)
+        super().__init__(screen, image)
         self.screen = screen
         self.image = image
+        self.bigball = bigball
         self.radius = 60 # 小球旋转半径
         self.angle = random.randint(0, 360) # 小球初始角度
         self.position = Point(0,0) # 小球当前当前圆心（中心）
         self.last_position = Point(0,0) # 上一圆心（中心）
-        self.bigball = bigball
+        
    
     def wrap_angle(self, angle):
         return angle % 360
