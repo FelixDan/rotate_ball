@@ -1,23 +1,21 @@
-import random, math
+import random
 from middle_ball import Middle_Ball
-from point import Point
+
 
 class Small_Ball(Middle_Ball):
     # 卫星类
     def __init__(self, screen, image, middleball):
         super().__init__(screen, image, middleball)
-        self.screen = screen
-        self.image = image
-        self.middleball = middleball
-        self.radius = 35 # 小球旋转半径
-        self.angle = random.randint(0, 360) # 小球初始角度
-        self.position = Point(0,0) # 小球当前当前圆心（中心）
-        self.last_position = Point(0,0) # 上一圆心（中心）
+        #self.screen = screen
+        #self.image = image
+        #self.middleball = middleball
+        self.radius = 30 # 小球旋转半径
+        #self.angle = random.randint(0, 360) # 小球初始角度
+        self.angle_speed = 8 # 每步前进所旋转的角度
 
-
-    
+'''
     def get_point(self):
-        self.angle = self.wrap_angle(self.angle - 5)
+        self.angle = self.wrap_angle(self.angle - self.angle_speed)
         # radians:把角度x转换成弧度
         # sin:求x(x为弧度)的正弦值
         # cos:求x(x为弧度)的余弦值
@@ -39,7 +37,7 @@ class Small_Ball(Middle_Ball):
         self.last_position.x = self.position.x
         self.last_position.y = self.position.y
 
-'''
+
     def update(self):
         self.rotate()
         self.get_point()

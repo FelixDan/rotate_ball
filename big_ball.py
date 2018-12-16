@@ -3,7 +3,7 @@ import pygame
 from pygame.sprite import Sprite
 
 
-class Ball(Sprite):
+class Big_Ball(Sprite):
     ''' ball class '''
     def __init__(self, screen, image):
         super().__init__()
@@ -15,8 +15,8 @@ class Ball(Sprite):
         self.rect.y = random.randint(100, 500)
         self.cx = random.randint(100, 800)
         self.cy = random.randint(100, 500)
-        self.x_spped = 2
-        self.y_speed = 2
+        self.x_speed = 5
+        self.y_speed = 5
         self.degrees = 0
 
     def rotate(self):
@@ -35,20 +35,21 @@ class Ball(Sprite):
         #pygame.draw.rect(screen, [255, 255, 255], (self.rect.centerx - 25, self.rect.centery - 25, self.rect.w, self.rect.h), 2)
 
     def move(self):
+        '''前进和碰撞边缘检测'''
         #self.rect.move_ip(self.vx, self.vy) # move_ip()可以移动目标，横向、纵向距离为x,y
         self.rect.centerx = self.cx
         self.rect.centery = self.cy
 
         if self.rect.right >= self.screen.get_width():
-            self.x_spped = -5
+            self.x_speed = -abs(self.x_speed)
         if self.rect.left <= 0:
-            self.x_spped = 5        
+            self.x_speed = abs(self.x_speed)        
         if self.rect.bottom >= self.screen.get_height():
-            self.y_speed = -5
+            self.y_speed = -abs(self.y_speed)
         if self.rect.top <=0:
-            self.y_speed = 5
+            self.y_speed = abs(self.y_speed)
 
-        self.cx += self.x_spped
+        self.cx += self.x_speed
         self.cy += self.y_speed
 
 

@@ -7,7 +7,7 @@ import pygame
 from pygame.sprite import Group
 from pygame.locals import *
 
-from big_ball import Ball
+from big_ball import Big_Ball
 from middle_ball import Middle_Ball
 from small_ball import Small_Ball
 
@@ -16,18 +16,18 @@ screen_width, screen_height = 900, 600
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("旋转功能实现")
 
-ball_image = "ball.gif"
+big_ball_image = "ball.gif"
 middle_ball_image = "small_ball.gif"
 small_ball_image = "check-icon16.png"
 
 group = Group()
 
 for i in range(2):
-    ball = Ball(screen, ball_image)
-    middleball = Middle_Ball(screen, middle_ball_image, ball)
+    bigball = Big_Ball(screen, big_ball_image)
+    middleball = Middle_Ball(screen, middle_ball_image, bigball)
     smallball = Small_Ball(screen, small_ball_image, middleball)    
 
-    group.add(ball, middleball, smallball)
+    group.add(bigball, middleball, smallball)
 
 clock = pygame.time.Clock()
 running = True
