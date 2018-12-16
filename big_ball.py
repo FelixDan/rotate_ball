@@ -1,7 +1,7 @@
 import random
 import pygame
-from pygame.sprite import Sprite, Group
-from point import Point
+from pygame.sprite import Sprite
+
 
 class Ball(Sprite):
     ''' ball class '''
